@@ -21,7 +21,7 @@ namespace CTP_WinFroms
 
 
         private Form activeForm;
-
+        private Button currentButton;
         public MainForm()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace CTP_WinFroms
             {
                 activeForm.Close();
             }
-            //ActivateButton(btnSender);
+            ActivateButton(btnSender);
             activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
@@ -45,6 +45,31 @@ namespace CTP_WinFroms
             childForm.Show();
 
         }
+
+        private void ActivateButton(object btnSender)
+        {
+            if (btnSender != null)
+            {
+                if (currentButton != btnSender)
+                {
+                    DisableButton();
+                    currentButton = (Button)btnSender;
+                    currentButton.BackColor = Color.DodgerBlue;
+                }
+            }
+        }
+
+        private void DisableButton()
+        {
+            foreach (Control previousButton in panelMenu.Controls)
+            {
+                if(previousButton.GetType() == typeof(Button))
+                {
+                    previousButton.BackColor = Color.Gray;
+                }
+            }
+        }
+
         private void btnHome_Click(object sender, EventArgs e)
         {
             var temp = new CTP_WinForms.Forms.HomeForm();
@@ -52,7 +77,21 @@ namespace CTP_WinFroms
         }
 
         private void panelDesktop_Paint(object sender, PaintEventArgs e)
->>>>>>>>> Temporary merge branch 2
+        {
+
+        }
+
+        private void panelLogo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Lbl_Title_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
         {
 
         }

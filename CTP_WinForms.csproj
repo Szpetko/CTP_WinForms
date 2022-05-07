@@ -107,6 +107,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="chart.ico" />
+    <Content Include="Resources\home %281%29.png" />
+    <None Include="Resources\exit40white.png" />
+    <None Include="Resources\settings40white.png" />
+    <None Include="Resources\print40white.png" />
+    <None Include="Resources\home40white.png" />
+    <None Include="Resources\home48white1.png" />
+    <None Include="Resources\home48white.png" />
+    <None Include="Resources\home48.png" />
+    <None Include="Resources\home %282%29.png" />
+    <None Include="Resources\home.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
