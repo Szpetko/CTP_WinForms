@@ -65,6 +65,43 @@
             this.btnSettings.Text = "button2";
             this.btnSettings.UseVisualStyleBackColor = true;
             // 
+            // tbYRangeMax
+            // 
+            this.tbYRangeMax.Location = new System.Drawing.Point(985, 517);
+            this.tbYRangeMax.Maximum = 100;
+            this.tbYRangeMax.Minimum = -100;
+            this.tbYRangeMax.Name = "tbYRangeMax";
+            this.tbYRangeMax.Size = new System.Drawing.Size(104, 45);
+            this.tbYRangeMax.TabIndex = 43;
+            this.tbYRangeMax.Value = 50;
+            this.tbYRangeMax.Scroll += new System.EventHandler(this.tbYRangeMax_Scroll);
+            // 
+            // chbShowXRange
+            // 
+            this.chbShowXRange.AutoSize = true;
+            this.chbShowXRange.Checked = true;
+            this.chbShowXRange.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbShowXRange.Location = new System.Drawing.Point(383, 486);
+            this.chbShowXRange.Name = "chbShowXRange";
+            this.chbShowXRange.Size = new System.Drawing.Size(140, 17);
+            this.chbShowXRange.TabIndex = 47;
+            this.chbShowXRange.Text = "Show X Range Selector";
+            this.chbShowXRange.UseVisualStyleBackColor = true;
+            this.chbShowXRange.CheckedChanged += new System.EventHandler(this.chbShowXRange_CheckedChanged);
+            // 
+            // chbShowYRange
+            // 
+            this.chbShowYRange.AutoSize = true;
+            this.chbShowYRange.Checked = true;
+            this.chbShowYRange.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbShowYRange.Location = new System.Drawing.Point(747, 486);
+            this.chbShowYRange.Name = "chbShowYRange";
+            this.chbShowYRange.Size = new System.Drawing.Size(140, 17);
+            this.chbShowYRange.TabIndex = 48;
+            this.chbShowYRange.Text = "Show Y Range Selector";
+            this.chbShowYRange.UseVisualStyleBackColor = true;
+            this.chbShowYRange.CheckedChanged += new System.EventHandler(this.chbShowYRange_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -76,14 +113,15 @@
             this.Name = "MainForm";
             this.panelDesktop.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 
-        #endregion
+		#endregion
 
         private System.Windows.Forms.Panel panelDesktop;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnHome;
-    }
+	}
 }
 
