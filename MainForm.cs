@@ -52,6 +52,7 @@ namespace CTP_WinFroms
         }
 
         private void panelDesktop_Paint(object sender, PaintEventArgs e)
+>>>>>>>>> Temporary merge branch 2
         {
 
         }
