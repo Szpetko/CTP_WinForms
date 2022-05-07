@@ -16,20 +16,19 @@ using System.Globalization;
 
 namespace CTP_WinFroms
 {
-	public partial class MainForm : Form
-	{
-
-		private Form activeForm;
-
-		public MainForm()
-		{
+    public partial class MainForm : Form
+    {
 
 
-			InitializeComponent();
-			this.Text = "CTP Program";
-		}
+        private Form activeForm;
 
-		private void OpenChildForm(Form childForm, object btnSender)
+        public MainForm()
+        {
+            InitializeComponent();
+            this.Text = "CTP Program";
+        }
+
+        private void OpenChildForm(Form childForm, object btnSender)
         {
             if (activeForm != null)
             {
@@ -46,11 +45,10 @@ namespace CTP_WinFroms
             childForm.Show();
 
         }
-
         private void btnHome_Click(object sender, EventArgs e)
         {
             var temp = new CTP_WinForms.Forms.HomeForm();
-            OpenChildForm(temp,sender);
+            OpenChildForm(temp, sender);
         }
 
         private void panelDesktop_Paint(object sender, PaintEventArgs e)

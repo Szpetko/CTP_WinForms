@@ -76,14 +76,15 @@
             this.Name = "MainForm";
             this.panelDesktop.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 
-        #endregion
+		#endregion
 
         private System.Windows.Forms.Panel panelDesktop;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnHome;
-    }
+	}
 }
 
