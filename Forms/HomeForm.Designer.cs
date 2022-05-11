@@ -58,6 +58,7 @@ namespace CTP_WinForms.Forms
             this.tbYAxisMax = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
             this.tbXAxisMax = new System.Windows.Forms.TrackBar();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tbYRangeMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbYRangeMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbXRangeMin)).BeginInit();
@@ -93,7 +94,7 @@ namespace CTP_WinForms.Forms
             this.chbShowLegend.AutoSize = true;
             this.chbShowLegend.Checked = true;
             this.chbShowLegend.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowLegend.Location = new System.Drawing.Point(13, 418);
+            this.chbShowLegend.Location = new System.Drawing.Point(496, 331);
             this.chbShowLegend.Margin = new System.Windows.Forms.Padding(4);
             this.chbShowLegend.Name = "chbShowLegend";
             this.chbShowLegend.Size = new System.Drawing.Size(116, 21);
@@ -203,7 +204,7 @@ namespace CTP_WinForms.Forms
             this.chbShowDataLabels.AutoSize = true;
             this.chbShowDataLabels.Checked = true;
             this.chbShowDataLabels.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowDataLabels.Location = new System.Drawing.Point(195, 378);
+            this.chbShowDataLabels.Location = new System.Drawing.Point(496, 300);
             this.chbShowDataLabels.Margin = new System.Windows.Forms.Padding(4);
             this.chbShowDataLabels.Name = "chbShowDataLabels";
             this.chbShowDataLabels.Size = new System.Drawing.Size(144, 21);
@@ -217,7 +218,7 @@ namespace CTP_WinForms.Forms
             this.chbShowYRange.AutoSize = true;
             this.chbShowYRange.Checked = true;
             this.chbShowYRange.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowYRange.Location = new System.Drawing.Point(496, 496);
+            this.chbShowYRange.Location = new System.Drawing.Point(680, 332);
             this.chbShowYRange.Margin = new System.Windows.Forms.Padding(4);
             this.chbShowYRange.Name = "chbShowYRange";
             this.chbShowYRange.Size = new System.Drawing.Size(179, 21);
@@ -231,7 +232,7 @@ namespace CTP_WinForms.Forms
             this.chbShowXRange.AutoSize = true;
             this.chbShowXRange.Checked = true;
             this.chbShowXRange.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbShowXRange.Location = new System.Drawing.Point(11, 496);
+            this.chbShowXRange.Location = new System.Drawing.Point(680, 299);
             this.chbShowXRange.Margin = new System.Windows.Forms.Padding(4);
             this.chbShowXRange.Name = "chbShowXRange";
             this.chbShowXRange.Size = new System.Drawing.Size(179, 21);
@@ -243,7 +244,7 @@ namespace CTP_WinForms.Forms
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(496, 534);
+            this.label9.Location = new System.Drawing.Point(492, 509);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 17);
@@ -252,7 +253,7 @@ namespace CTP_WinForms.Forms
             // 
             // tbYRangeMin
             // 
-            this.tbYRangeMin.Location = new System.Drawing.Point(577, 534);
+            this.tbYRangeMin.Location = new System.Drawing.Point(573, 509);
             this.tbYRangeMin.Margin = new System.Windows.Forms.Padding(4);
             this.tbYRangeMin.Maximum = 100;
             this.tbYRangeMin.Minimum = -100;
@@ -265,7 +266,7 @@ namespace CTP_WinForms.Forms
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(724, 534);
+            this.label10.Location = new System.Drawing.Point(723, 509);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(92, 17);
@@ -274,7 +275,7 @@ namespace CTP_WinForms.Forms
             // 
             // tbYRangeMax
             // 
-            this.tbYRangeMax.Location = new System.Drawing.Point(813, 534);
+            this.tbYRangeMax.Location = new System.Drawing.Point(812, 509);
             this.tbYRangeMax.Margin = new System.Windows.Forms.Padding(4);
             this.tbYRangeMax.Maximum = 100;
             this.tbYRangeMax.Minimum = -100;
@@ -287,7 +288,7 @@ namespace CTP_WinForms.Forms
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 534);
+            this.label5.Location = new System.Drawing.Point(10, 509);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 17);
@@ -296,7 +297,7 @@ namespace CTP_WinForms.Forms
             // 
             // tbXRangeMin
             // 
-            this.tbXRangeMin.Location = new System.Drawing.Point(92, 534);
+            this.tbXRangeMin.Location = new System.Drawing.Point(91, 509);
             this.tbXRangeMin.Margin = new System.Windows.Forms.Padding(4);
             this.tbXRangeMin.Maximum = 100;
             this.tbXRangeMin.Minimum = -100;
@@ -309,7 +310,7 @@ namespace CTP_WinForms.Forms
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(239, 534);
+            this.label8.Location = new System.Drawing.Point(238, 509);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(92, 17);
@@ -318,7 +319,7 @@ namespace CTP_WinForms.Forms
             // 
             // tbXRangeMax
             // 
-            this.tbXRangeMax.Location = new System.Drawing.Point(328, 534);
+            this.tbXRangeMax.Location = new System.Drawing.Point(327, 509);
             this.tbXRangeMax.Margin = new System.Windows.Forms.Padding(4);
             this.tbXRangeMax.Maximum = 100;
             this.tbXRangeMax.Minimum = -100;
@@ -331,7 +332,7 @@ namespace CTP_WinForms.Forms
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(496, 451);
+            this.label7.Location = new System.Drawing.Point(495, 439);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 17);
@@ -341,7 +342,7 @@ namespace CTP_WinForms.Forms
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 451);
+            this.label6.Location = new System.Drawing.Point(10, 439);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 17);
@@ -350,7 +351,7 @@ namespace CTP_WinForms.Forms
             // 
             // tbYAxisMin
             // 
-            this.tbYAxisMin.Location = new System.Drawing.Point(572, 451);
+            this.tbYAxisMin.Location = new System.Drawing.Point(571, 439);
             this.tbYAxisMin.Margin = new System.Windows.Forms.Padding(4);
             this.tbYAxisMin.Name = "tbYAxisMin";
             this.tbYAxisMin.Size = new System.Drawing.Size(139, 56);
@@ -359,7 +360,7 @@ namespace CTP_WinForms.Forms
             // 
             // tbXAxisMin
             // 
-            this.tbXAxisMin.Location = new System.Drawing.Point(92, 451);
+            this.tbXAxisMin.Location = new System.Drawing.Point(91, 439);
             this.tbXAxisMin.Margin = new System.Windows.Forms.Padding(4);
             this.tbXAxisMin.Name = "tbXAxisMin";
             this.tbXAxisMin.Size = new System.Drawing.Size(139, 56);
@@ -369,7 +370,7 @@ namespace CTP_WinForms.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(724, 451);
+            this.label3.Location = new System.Drawing.Point(723, 439);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 17);
@@ -378,20 +379,20 @@ namespace CTP_WinForms.Forms
             // 
             // tbYAxisMax
             // 
-            this.tbYAxisMax.Location = new System.Drawing.Point(813, 451);
+            this.tbYAxisMax.Location = new System.Drawing.Point(812, 439);
             this.tbYAxisMax.Margin = new System.Windows.Forms.Padding(4);
-            this.tbYAxisMax.Maximum = 52;
+            this.tbYAxisMax.Maximum = 20;
             this.tbYAxisMax.Minimum = 1;
             this.tbYAxisMax.Name = "tbYAxisMax";
             this.tbYAxisMax.Size = new System.Drawing.Size(139, 56);
             this.tbYAxisMax.TabIndex = 51;
-            this.tbYAxisMax.Value = 26;
+            this.tbYAxisMax.Value = 20;
             this.tbYAxisMax.Scroll += new System.EventHandler(this.tbYAxisMax_Scroll);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(239, 451);
+            this.label2.Location = new System.Drawing.Point(238, 439);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 17);
@@ -400,20 +401,31 @@ namespace CTP_WinForms.Forms
             // 
             // tbXAxisMax
             // 
-            this.tbXAxisMax.Location = new System.Drawing.Point(328, 451);
+            this.tbXAxisMax.Location = new System.Drawing.Point(327, 439);
             this.tbXAxisMax.Margin = new System.Windows.Forms.Padding(4);
-            this.tbXAxisMax.Maximum = 24;
+            this.tbXAxisMax.Maximum = 20;
             this.tbXAxisMax.Name = "tbXAxisMax";
             this.tbXAxisMax.Size = new System.Drawing.Size(139, 56);
             this.tbXAxisMax.TabIndex = 49;
             this.tbXAxisMax.Value = 12;
             this.tbXAxisMax.Scroll += new System.EventHandler(this.tbXAxisMax_Scroll);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(708, 378);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 67;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1042, 590);
+            this.ClientSize = new System.Drawing.Size(1042, 587);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.chbShowYRange);
             this.Controls.Add(this.chbShowXRange);
             this.Controls.Add(this.label9);
@@ -445,6 +457,7 @@ namespace CTP_WinForms.Forms
             this.Controls.Add(this.lineChart);
             this.Name = "HomeForm";
             this.Text = "HomeForm";
+            this.Load += new System.EventHandler(this.HomeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tbYRangeMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbYRangeMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbXRangeMin)).EndInit();
@@ -459,8 +472,6 @@ namespace CTP_WinForms.Forms
         }
 
         #endregion
-
-        private MindFusion.Charting.WinForms.LineChart lineChart;
         private System.Windows.Forms.CheckBox chbShowLegend;
         private System.Windows.Forms.CheckBox chbShowYCoords;
         private System.Windows.Forms.CheckBox chbShowXCoords;
@@ -489,5 +500,7 @@ namespace CTP_WinForms.Forms
         private System.Windows.Forms.TrackBar tbYAxisMax;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TrackBar tbXAxisMax;
+        private System.Windows.Forms.Button button1;
+        public MindFusion.Charting.WinForms.LineChart lineChart;
     }
 }

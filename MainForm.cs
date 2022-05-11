@@ -63,7 +63,7 @@ namespace CTP_WinFroms
         {
             foreach (Control previousButton in panelMenu.Controls)
             {
-                if(previousButton.GetType() == typeof(Button))
+                if (previousButton.GetType() == typeof(Button))
                 {
                     previousButton.BackColor = Color.Gray;
                 }
@@ -72,8 +72,18 @@ namespace CTP_WinFroms
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            var temp = new CTP_WinForms.Forms.HomeForm();
-            OpenChildForm(temp, sender);
+            try
+            {
+                var temp = new CTP_WinForms.Forms.HomeForm();
+                OpenChildForm(temp, sender);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n" + "Proszę ustawić poprawną ściężkę do pliku.");
+                var temp = new CTP_WinForms.Forms.Form1();
+                OpenChildForm(temp, btnSettings);
+            }
+            
         }
 
         private void panelDesktop_Paint(object sender, PaintEventArgs e)
@@ -96,9 +106,17 @@ namespace CTP_WinFroms
 
         }
 
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            var temp = new CTP_WinForms.Forms.Form1();
+            OpenChildForm(temp, sender);
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+
     }
 }
