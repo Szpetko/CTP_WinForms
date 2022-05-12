@@ -5,13 +5,16 @@ using CTP_WinForms;
 using MindFusion.Charting;
 namespace CTP_WinForms.Forms
 {
-    public partial class Form1 : Form
+    public partial class SettingsForm : Form
     {
-        public Form1()
+        private readonly HomeForm _Homeform;
+
+
+        public SettingsForm(HomeForm homeForm)
         {
             InitializeComponent();
 
-
+            _Homeform = homeForm;
             using (StreamReader sw = new StreamReader("path.txt"))
             {
                 tb_FilePath.Text = sw.ReadLine();
@@ -38,6 +41,13 @@ namespace CTP_WinForms.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var dlg = new SaveFileDialog();
+            dlg.Filter = "(PDF *.pdf)|*.pdf";
+            var result = dlg.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                _Homeform.lineChart.ExportPdf(dlg.FileName);
+            }
         }
     }
 }

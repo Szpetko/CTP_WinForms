@@ -79,7 +79,7 @@ namespace CTP_WinForms.Forms
             this.lineChart.Name = "lineChart";
             this.lineChart.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lineChart.ShowLegend = true;
-            this.lineChart.Size = new System.Drawing.Size(1016, 279);
+            this.lineChart.Size = new System.Drawing.Size(1236, 279);
             this.lineChart.SubtitleFontName = null;
             this.lineChart.SubtitleFontSize = null;
             this.lineChart.SubtitleFontStyle = null;
@@ -424,7 +424,7 @@ namespace CTP_WinForms.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1042, 587);
+            this.ClientSize = new System.Drawing.Size(1262, 593);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.chbShowYRange);
             this.Controls.Add(this.chbShowXRange);

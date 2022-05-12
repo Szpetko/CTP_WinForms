@@ -1,27 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.IO;
-
-using MindFusion.Charting;
-using MindFusion.Drawing;
 
 using Color = System.Drawing.Color;
-using System.Globalization;
 
 namespace CTP_WinFroms
 {
     public partial class MainForm : Form
     {
-
-
         private Form activeForm;
         private Button currentButton;
+
         public MainForm()
         {
             InitializeComponent();
@@ -43,7 +31,6 @@ namespace CTP_WinFroms
             this.panelDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-
         }
 
         private void ActivateButton(object btnSender)
@@ -80,35 +67,34 @@ namespace CTP_WinFroms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + "\n" + "Proszę ustawić poprawną ściężkę do pliku.");
-                var temp = new CTP_WinForms.Forms.Form1();
-                OpenChildForm(temp, btnSettings);
+                var home = new CTP_WinForms.Forms.HomeForm();
+                var temp = new CTP_WinForms.Forms.SettingsForm(home);
+                OpenChildForm(temp, sender);
             }
-            
         }
 
         private void panelDesktop_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void panelLogo_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void Lbl_Title_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-
+            var temp = new CTP_WinForms.Forms.PrintForm();
+            OpenChildForm(temp, sender);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            var temp = new CTP_WinForms.Forms.Form1();
+            var home = new CTP_WinForms.Forms.HomeForm();
+            var temp = new CTP_WinForms.Forms.SettingsForm(home);
             OpenChildForm(temp, sender);
         }
 
@@ -116,7 +102,5 @@ namespace CTP_WinFroms
         {
             Application.Exit();
         }
-
-
     }
 }

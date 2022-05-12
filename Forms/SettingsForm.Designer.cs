@@ -1,7 +1,7 @@
 ﻿
 namespace CTP_WinForms.Forms
 {
-    partial class Form1
+    partial class SettingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -66,15 +66,15 @@ namespace CTP_WinForms.Forms
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form1
+            // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1262, 593);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_OpenFile);
             this.Controls.Add(this.tb_FilePath);
-            this.Name = "Form1";
+            this.Name = "SettingsForm";
             this.Text = "Settings";
             this.ResumeLayout(false);
             this.PerformLayout();
