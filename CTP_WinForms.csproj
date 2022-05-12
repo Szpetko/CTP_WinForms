@@ -34,7 +34,8 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>chart.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MindFusion.Charting">
@@ -124,7 +125,7 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="chart.ico" />
+    <Content Include="icon.ico" />
     <Content Include="Resources\home %281%29.png" />
     <None Include="Resources\exit40white.png" />
     <None Include="Resources\settings40white.png" />

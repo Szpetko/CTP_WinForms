@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-
 using Color = System.Drawing.Color;
 
 namespace CTP_WinFroms
@@ -10,12 +9,20 @@ namespace CTP_WinFroms
         private Form activeForm;
         private Button currentButton;
 
+        //Main Form
         public MainForm()
         {
             InitializeComponent();
+
+            // setting up the app name
             this.Text = "CTP Program";
+
+            // setting up empty title
+            Lbl_Title.Text = "";
         }
 
+        //Methods
+        // opening form method
         private void OpenChildForm(Form childForm, object btnSender)
         {
             if (activeForm != null)
@@ -31,8 +38,10 @@ namespace CTP_WinFroms
             this.panelDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+            Lbl_Title.Text = childForm.Text;
         }
 
+        // activating and changing color of a button method
         private void ActivateButton(object btnSender)
         {
             if (btnSender != null)
@@ -46,6 +55,7 @@ namespace CTP_WinFroms
             }
         }
 
+        // disabling and changing color to default of a button method
         private void DisableButton()
         {
             foreach (Control previousButton in panelMenu.Controls)
@@ -57,50 +67,57 @@ namespace CTP_WinFroms
             }
         }
 
+        //Buttons
         private void btnHome_Click(object sender, EventArgs e)
         {
             try
             {
+                // opening home form
                 var temp = new CTP_WinForms.Forms.HomeForm();
                 OpenChildForm(temp, sender);
             }
             catch (Exception ex)
             {
+                // changing form to setting and displaying a message in case of fail
                 MessageBox.Show(ex.Message + "\n" + "Proszę ustawić poprawną ściężkę do pliku.");
-                var home = new CTP_WinForms.Forms.HomeForm();
-                var temp = new CTP_WinForms.Forms.SettingsForm(home);
-                OpenChildForm(temp, sender);
+                var temp = new CTP_WinForms.Forms.SettingsForm();
+                OpenChildForm(temp, btnSettings);
             }
-        }
-
-        private void panelDesktop_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void panelLogo_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void Lbl_Title_Click(object sender, EventArgs e)
-        {
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            var temp = new CTP_WinForms.Forms.PrintForm();
-            OpenChildForm(temp, sender);
+            try
+            {
+                // opening print form
+                var temp = new CTP_WinForms.Forms.PrintForm();
+                OpenChildForm(temp, sender);
+            }
+            catch (Exception ex)
+            {
+                // changing form to setting and displaying a message in case of fail
+                MessageBox.Show(ex.Message + "\n" + "Proszę ustawić poprawną ściężkę do pliku.");
+                var temp = new CTP_WinForms.Forms.SettingsForm();
+                OpenChildForm(temp, btnSettings);
+            }
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            var home = new CTP_WinForms.Forms.HomeForm();
-            var temp = new CTP_WinForms.Forms.SettingsForm(home);
+            // opening settings form
+            var temp = new CTP_WinForms.Forms.SettingsForm();
             OpenChildForm(temp, sender);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            // exiting the app
             Application.Exit();
+        }
+
+        private void Lbl_Title_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

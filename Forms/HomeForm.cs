@@ -16,14 +16,15 @@ namespace CTP_WinForms.Forms
         private SolidBrush firstBrush;
         private SolidBrush secondBrush;
 
+        //Main Form
         public HomeForm()
         {
             InitializeComponent();
 
-            // read path
-            using (StreamReader sw = new StreamReader("path.txt"))
+            // reading path from a file
+            using (StreamReader sr = new StreamReader("path.txt"))
             {
-                path = sw.ReadLine();
+                path = sr.ReadLine();
             }
 
             // create line brushes
@@ -34,18 +35,28 @@ namespace CTP_WinForms.Forms
             lineChart.Theme.DataLabelsBackground = new SolidBrush(Color.White);
             lineChart.Theme.DataLabelsBorderStroke = new SolidBrush(Color.Gray);
 
-            //load data
+            // load data
             IList<double> listA = new List<double>();
             List<double> listB = new List<double>();
             List<double> listC = new List<double>();
 
-            using (var reader = new StreamReader(path))
+            // firs row from data
+            string[] titles;
+
+            // opening file from a path
+            using (var sr = new StreamReader(path))
             {
-                while (!reader.EndOfStream)
+                // reading and spliting title data
+                var line_titles = sr.ReadLine();
+                titles = line_titles.Split(',');
+
+                while (!sr.EndOfStream)
                 {
-                    var line = reader.ReadLine();
+                    // reading and spliting main data
+                    var line = sr.ReadLine();
                     var values = line.Split(',');
 
+                    // saving data to lists
                     NumberFormatInfo provider = new NumberFormatInfo();
                     provider.NumberDecimalSeparator = ".";
                     listA.Add(Convert.ToDouble(values[0], provider));
@@ -57,11 +68,11 @@ namespace CTP_WinForms.Forms
             // create sample data series
             lineChart.Series.Add(
                 new Series2D(listA, listB, null)
-                { Title = "Series listB" });
+                { Title = "Series " + titles[1] });
 
             lineChart.Series.Add(
                 new Series2D(listA, listC, null)
-                { Title = "Series listC" });
+                { Title = "Series " + titles[2] });
 
             lineChart.XAxis.Interval = 0.2;
 
@@ -75,16 +86,16 @@ namespace CTP_WinForms.Forms
 
             // customize look
             lineChart.ShowXRangeSelector = true;
-            lineChart.XScrollRangeMin = 0;
-            lineChart.XScrollRangeMax = listA.Max();
+            lineChart.XScrollRangeMin = -1;
+            lineChart.XScrollRangeMax = listA.Max() + 1;
             lineChart.PinGrid = false;
 
             lineChart.ShowYRangeSelector = true;
-            lineChart.YScrollRangeMin = 0;
-            lineChart.YScrollRangeMax = 12;
+            lineChart.YScrollRangeMin = -1;
+            lineChart.YScrollRangeMax = listB.Max() + 1;
 
             lineChart.Title = "";
-            lineChart.XAxis.Title = "t[s]";
+            lineChart.XAxis.Title = titles[0];
             lineChart.YAxis.Title = "U[v]";
 
             // set up grid type combo box
@@ -103,8 +114,7 @@ namespace CTP_WinForms.Forms
             lineChart.LineType = LineType.Polyline;
         }
 
-        
-
+        //Buttons
         private void chbShowYCoords_CheckedChanged(object sender, EventArgs e)
         {
             lineChart.ShowYCoordinates = !lineChart.ShowYCoordinates;
@@ -114,15 +124,6 @@ namespace CTP_WinForms.Forms
         private void chbShowLegend_CheckedChanged(object sender, EventArgs e)
         {
             lineChart.ShowLegend = !lineChart.ShowLegend;
-            lineChart.Invalidate();
-        }
-
-        private void chbShowDataLabels_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chbShowDataLabels.Checked)
-                lineChart.ShowDataLabels = LabelKinds.All;
-            else
-                lineChart.ShowDataLabels = LabelKinds.None;
             lineChart.Invalidate();
         }
 
@@ -147,44 +148,6 @@ namespace CTP_WinForms.Forms
         private void tbYAxisMin_Scroll(object sender, EventArgs e)
         {
             lineChart.YAxis.MinValue = tbYAxisMin.Value;
-            lineChart.Invalidate();
-        }
-
-        private void tbXRangeMin_Scroll(object sender, EventArgs e)
-        {
-            lineChart.XScrollRangeMin = tbXRangeMin.Value;
-            lineChart.Invalidate();
-        }
-
-        private void tbXRangeMax_Scroll(object sender, EventArgs e)
-        {
-            lineChart.XScrollRangeMax = tbXRangeMax.Value;
-            lineChart.Invalidate();
-        }
-
-        private void tbYRangeMax_Scroll(object sender, EventArgs e)
-        {
-            lineChart.YScrollRangeMax = tbYRangeMax.Value;
-            lineChart.Invalidate();
-        }
-
-        private void chbShowXRange_CheckedChanged(object sender, EventArgs e)
-        {
-            lineChart.ShowXRangeSelector = chbShowXRange.Checked;
-            lineChart.XScrollRangeMin = tbXRangeMin.Value = -50;
-            lineChart.XScrollRangeMax = tbXRangeMax.Value = 50;
-        }
-
-        private void chbShowYRange_CheckedChanged(object sender, EventArgs e)
-        {
-            lineChart.ShowYRangeSelector = chbShowYRange.Checked;
-            lineChart.YScrollRangeMin = tbYRangeMin.Value = -50;
-            lineChart.YScrollRangeMax = tbYRangeMax.Value = 50;
-        }
-
-        private void tbYRangeMin_Scroll(object sender, EventArgs e)
-        {
-            lineChart.YScrollRangeMin = tbYRangeMin.Value;
             lineChart.Invalidate();
         }
 
@@ -218,19 +181,16 @@ namespace CTP_WinForms.Forms
             lineChart.Invalidate();
         }
 
-        private void HomeForm_Load(object sender, EventArgs e)
+        private void chbShowXRangeSelector_CheckedChanged(object sender, EventArgs e)
         {
+            lineChart.ShowXRangeSelector = !lineChart.ShowXRangeSelector;
+            lineChart.Invalidate();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void chbShowYRangeSelector_CheckedChanged(object sender, EventArgs e)
         {
-            var dlg = new SaveFileDialog();
-            dlg.Filter = "(PDF *.pdf)|*.pdf";
-            var result = dlg.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                lineChart.ExportPdf(dlg.FileName);
-            }
+            lineChart.ShowYRangeSelector = !lineChart.ShowYRangeSelector;
+            lineChart.Invalidate();
         }
     }
 }

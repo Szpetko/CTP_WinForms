@@ -1,52 +1,50 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.IO;
-using CTP_WinForms;
-using MindFusion.Charting;
+using System.Windows.Forms;
+
 namespace CTP_WinForms.Forms
 {
     public partial class SettingsForm : Form
     {
-        private readonly HomeForm _Homeform;
-
-
-        public SettingsForm(HomeForm homeForm)
+        //Main Form
+        public SettingsForm()
         {
             InitializeComponent();
 
-            _Homeform = homeForm;
-            using (StreamReader sw = new StreamReader("path.txt"))
+            // creating file if not exsist
+            if (!File.Exists("path.txt"))
             {
-                tb_FilePath.Text = sw.ReadLine();
+                using (StreamWriter sw = File.AppendText("path.txt"))
+                {
+                }
+            }
+
+            // reading path from a file
+            using (StreamReader sr = new StreamReader("path.txt"))
+            {
+                tb_FilePath.Text = sr.ReadLine();
             }
         }
 
+        //Buttons
         private void btn_OpenFile_Click(object sender, EventArgs e)
         {
+            // opening windows path finder/opener
             OpenFileDialog ofd = new OpenFileDialog();
 
+            // filtering files
             ofd.Filter = "csv fies (*.csv)|*.csv|All Files (*.*)|*.*";
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                // dispaly path
                 tb_FilePath.Text = ofd.FileName;
+
+                // writing path to a file
                 using (StreamWriter sw = new StreamWriter("path.txt"))
                 {
                     sw.WriteLine(ofd.FileName);
                 }
-            }
-            //homefrm.Show();
-            //this.Hide();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var dlg = new SaveFileDialog();
-            dlg.Filter = "(PDF *.pdf)|*.pdf";
-            var result = dlg.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                _Homeform.lineChart.ExportPdf(dlg.FileName);
             }
         }
     }
