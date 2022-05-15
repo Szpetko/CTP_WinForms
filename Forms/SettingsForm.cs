@@ -33,7 +33,7 @@ namespace CTP_WinForms.Forms
             OpenFileDialog ofd = new OpenFileDialog();
 
             // filtering files
-            ofd.Filter = "csv fies (*.csv)|*.csv|All Files (*.*)|*.*";
+            ofd.Filter = "Csv Files (*.csv)|*.csv|Excel Files (*.xlsx)|*.xlsx;*xls|All Files (*.*)|*.*";
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {

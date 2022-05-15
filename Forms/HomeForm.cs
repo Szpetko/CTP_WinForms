@@ -1,4 +1,5 @@
-﻿using MindFusion.Charting;
+﻿using ExcelDataReader;
+using MindFusion.Charting;
 using MindFusion.Drawing;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Color = System.Drawing.Color;
-
 namespace CTP_WinForms.Forms
 {
     public partial class HomeForm : Form
@@ -41,29 +41,66 @@ namespace CTP_WinForms.Forms
             List<double> listC = new List<double>();
 
             // firs row from data
-            string[] titles;
+            string[] titles = new string[3];
 
             // opening file from a path
-            using (var sr = new StreamReader(path))
+
+            if (Path.GetExtension(path) == ".csv")
             {
-                // reading and spliting title data
-                var line_titles = sr.ReadLine();
-                titles = line_titles.Split(',');
-
-                while (!sr.EndOfStream)
+                // reading for csv files
+                using (var sr = new StreamReader(path))
                 {
-                    // reading and spliting main data
-                    var line = sr.ReadLine();
-                    var values = line.Split(',');
+                    // reading and spliting title data
+                    var line_titles = sr.ReadLine();
+                    titles = line_titles.Split(',');
 
-                    // saving data to lists
-                    NumberFormatInfo provider = new NumberFormatInfo();
-                    provider.NumberDecimalSeparator = ".";
-                    listA.Add(Convert.ToDouble(values[0], provider));
-                    listB.Add(Convert.ToDouble(values[1], provider));
-                    listC.Add(Convert.ToDouble(values[2], provider));
+                    while (!sr.EndOfStream)
+                    {
+                        // reading and spliting main data
+                        var line = sr.ReadLine();
+                        var values = line.Split(',');
+
+                        // saving data to lists
+                        NumberFormatInfo provider = new NumberFormatInfo();
+                        provider.NumberDecimalSeparator = ".";
+                        listA.Add(Convert.ToDouble(values[0], provider));
+                        listB.Add(Convert.ToDouble(values[1], provider));
+                        listC.Add(Convert.ToDouble(values[2], provider));
+                    }
                 }
             }
+            else if (Path.GetExtension(path) == ".xlsx")
+            {
+                // reading for excel files
+                using (var stream = File.Open(path, FileMode.Open, FileAccess.Read))
+                {
+                    using (var reader = ExcelReaderFactory.CreateReader(stream))
+                    {
+                        do
+                        {
+                            // first row
+                            reader.Read();
+                            
+                            // reading title data
+                            for (int column = 0; column < reader.FieldCount; column++)
+                            {
+                                titles[column] = reader.GetString(column);
+                            }
+
+                            while (reader.Read()) // each row
+                            {
+                                listA.Add(Convert.ToDouble(reader.GetValue(0)));
+                                listB.Add(Convert.ToDouble(reader.GetValue(1)));
+                                listC.Add(Convert.ToDouble(reader.GetValue(2)));
+                            }
+                        } while (reader.NextResult()); // move to next sheet
+                    }
+                }
+            }
+
+            
+
+
 
             // create sample data series
             lineChart.Series.Add(
@@ -74,7 +111,7 @@ namespace CTP_WinForms.Forms
                 new Series2D(listA, listC, null)
                 { Title = "Series " + titles[2] });
 
-            lineChart.XAxis.Interval = 0.2;
+            lineChart.XAxis.Interval = listA.Max()/25;
 
             // assign one brush per series
             lineChart.Plot.SeriesStyle = new MixedSeriesStyle()
@@ -86,12 +123,12 @@ namespace CTP_WinForms.Forms
 
             // customize look
             lineChart.ShowXRangeSelector = true;
-            lineChart.XScrollRangeMin = -1;
+            lineChart.XScrollRangeMin = listA.Min() - 1;
             lineChart.XScrollRangeMax = listA.Max() + 1;
             lineChart.PinGrid = false;
 
             lineChart.ShowYRangeSelector = true;
-            lineChart.YScrollRangeMin = -1;
+            lineChart.YScrollRangeMin = listB.Min() - 1;
             lineChart.YScrollRangeMax = listB.Max() + 1;
 
             lineChart.Title = "";
